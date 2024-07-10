@@ -69,7 +69,7 @@ abstract class Empleado {
     public abstract void calcularSalario();
     
     // Reutilizamos la logica del toString para dar formato a la cadena CSV
-    public String toCSV() {
+    public String toStringCSV() {
         return nombre + "," + apellidos + "," + cedula + "," + direccion + "," + aniosAntiguedad + "," + telefono + "," + salario;
     }
 
@@ -106,8 +106,8 @@ class Secretario extends Empleado {
     }
     
     @Override
-    public String toCSV() {
-        return super.toCSV() + "," + lugarDespacho;
+    public String toStringCSV() {
+        return super.toStringCSV() + "," + lugarDespacho;
     }
     
 
@@ -151,8 +151,8 @@ class Vendedor extends Empleado {
     }
     
     @Override
-    public String toCSV() {
-        return super.toCSV() + "," + autoMatricula + "," + autoMarca + "," + autoModelo + "," + telefonoMovil + "," + areaVenta;
+    public String toStringCSV() {
+        return super.toStringCSV() + "," + autoMatricula + "," + autoMarca + "," + autoModelo + "," + telefonoMovil + "," + areaVenta;
     }
 
     @Override
@@ -187,8 +187,8 @@ class JefeZona extends Empleado {
     }
     
     @Override
-    public String toCSV() {
-        return super.toCSV() + "," + lugarDespacho + "," + secretario.nombre + "," + vendedores.size();
+    public String toStringCSV() {
+        return super.toStringCSV() + "," + lugarDespacho + "," + secretario.nombre + "," + vendedores.size();
     }
 
     @Override
@@ -210,7 +210,7 @@ class escrituraArchivoCSV {
             // Ciclo repetitivo for, para por cada iteracion
             // agregar la cadena con formato de cada subclase
             for (Empleado emp : empleados) {
-                sc.append(emp.toCSV()).append("\n");
+                sc.append(emp.toStringCSV()).append("\n");
             }
         }
     }
